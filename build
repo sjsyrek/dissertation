@@ -1,10 +1,4 @@
-xelatex dissertation.tex
-if [ $1 == "all" ] || [ ! -e dissertation.bcf ]
-then
-  bibtex dissertation.tex
-  xelatex dissertation.tex
-  xelatex dissertation.tex
-elif [ ! -e dissertation.toc ] || [ $1 == "toc" ]
-then
-  xelatex dissertation.tex
-fi
+xelatex dissertation
+biber dissertation
+xelatex dissertation
+xelatex dissertation
