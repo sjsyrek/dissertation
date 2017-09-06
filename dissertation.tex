@@ -1,0 +1,125 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{dissertation}
+
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[norule]{footmisc}
+\usepackage{verse}
+\usepackage{mla13}
+\usepackage{endnotes}
+\usepackage{sectsty}
+\usepackage{csquotes}
+\usepackage{fontspec}
+%\usepackage{varwidth}
+%\usepackage{epigraph} % for epigraphs
+
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\let\footnote=\endnote % Convert footnotes into endnotes
+\chapterfont{\large}
+\sectionfont{\large}
+
+% The following environment is meant as a substitute for the \quote environment
+% in accordance with Rutgers formatting guidelines for block quotes:
+
+\newenvironment{bq}{
+  \par
+  \singlespacing
+  \list{}{
+    \rightmargin0pt}
+    \item\relax
+  }
+{\endlist}
+
+% This environment is for verse quotes, so I don't have to type \begin{verse}[\versewidth] \singlespacing
+% at the beginning of every verse environment
+
+\newenvironment{vq}{
+	\begin{verse}[\versewidth] 
+	\singlespacing
+	}
+{\end{verse}}
+
+\settowidth{\versewidth}{The slings and arrows of outrageous fortune} % Sets the position of all verse lines at around the center of the page, on the basis of the length of one of Shakespeare's more famous lines.
+
+% This version centers the verse quotes individually according to the length of the longest line of text in the quote
+%\newenvironment{vq}%
+%  {\begin{verse}[]%
+%  \singlespacing%
+%  \center%
+%  \varwidth{\linewidth}}%
+%  {\endvarwidth\endcenter\end{verse}}%
+
+% Author & title page info
+
+\title{DEEDS CHRONICLED IN HELL: THE POETICS OF DRAMATIC HISTORIOGRAPHY IN SHAKESPEARE'S PLAYS}
+\submitted{December 2017}
+\copyrightyear{2017}
+\author{Steven Joseph Syrek}
+\adviser{Professor Ronald Levao}
+\department{English}
+
+% Front-matter
+
+\ifodd 0 % Change this to "\ifodd 1" to disable frontmatter
+\renewcommand{\maketitlepage}{}
+\renewcommand*{\makecopyrightpage}{}
+\renewcommand*{\makeabstract}{}
+\else
+\abstract{\input{abstract}}
+\acknowledgements{\input{acknowledgements}}
+\dedication{To Samantha.}
+\fi
+
+\sources{dissertation.bib} % BibTeX database of citations
+
+\begin{document}
+
+\makefrontmatter
+
+% Introduction
+
+\pagestyle{myheadings}
+\markboth{\thepage}{\textsc{The abstract (and brief chronicles of the time)}}
+\include{ch-methodology}
+\theendnotes
+\setcounter{endnote}{0}
+
+% Richard II chapter
+
+\clearpage
+\pagestyle{myheadings}
+\markboth{\thepage}{\textsc{Is not the king's name twenty thousand names?}}
+\include{ch-richard-ii}
+\theendnotes
+\setcounter{endnote}{0}
+
+% Coriolanus chapter
+
+\clearpage
+\pagestyle{myheadings}
+\markboth{\thepage}{\textsc{He did it to please his mother}}
+\include{ch-coriolanus}
+\theendnotes
+\setcounter{endnote}{0}
+
+% King Lear chapter
+
+\clearpage
+\pagestyle{myheadings}
+\markboth{\thepage}{\textsc{The question of Cordelia and her father}}
+\include{ch-king-lear}
+\theendnotes
+
+% Works Cited
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Works Cited}
+\singlespacing
+\thispagestyle{plain}
+\pagestyle{myheadings}
+\markboth{\thepage}{\textsc{Works Cited}}
+\makeworkscited
+
+\end{document}

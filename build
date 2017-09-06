@@ -1,0 +1,10 @@
+if [ ! -e dissertation.toc ] || [ $1 == "all" ]
+then
+  xelatex dissertation.tex
+  xelatex dissertation.tex
+  num="twice"
+else
+  xelatex dissertation.tex
+  num="once"
+fi
+echo Dissertation built $num.
