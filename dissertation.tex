@@ -7,7 +7,6 @@
 \usepackage{libertine}
 \usepackage[norule]{footmisc}
 \usepackage{verse}
-\usepackage{mla13}
 \usepackage{endnotes}
 \usepackage{sectsty}
 \usepackage{csquotes}
@@ -72,7 +71,10 @@
 \dedication{To Samantha.}
 \fi
 
-\sources{dissertation.bib} % BibTeX database of citations
+%% \usepackage[backend=bibtex, style=mla]{biblatex}
+\usepackage[american]{babel}
+\usepackage[style=mla,backend=biber]{biblatex}
+\addbibresource{dissertation.bib}
 
 \begin{document}
 
@@ -120,6 +122,8 @@
 \thispagestyle{plain}
 \pagestyle{myheadings}
 \markboth{\thepage}{\textsc{Works Cited}}
-\makeworkscited
+%% I think this got changed.
+%% \makeworkscited
+\printbibliography
 
 \end{document}
